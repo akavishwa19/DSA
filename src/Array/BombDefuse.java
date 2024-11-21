@@ -35,14 +35,18 @@ public class BombDefuse {
                 }
             }
             else{
-                for(int j=1;j<=(-k);j++){
+                for(int j=1;j<=Math.abs(k)+1;j++){
+
+                    System.out.println("ENTERED THE LOOP");
 
                     System.out.println(i+" "+j);
                     int temp=n-i-j;
 
+                    System.out.println("raw temp: "+temp);
+
                     temp= ((temp%n) + n )%n;
                     //modules: ((a % b) + b) % b
-                    System.out.println("temp: "+temp);
+                    System.out.println("final temp: "+temp);
 
 
                     sum=sum+code[temp];
