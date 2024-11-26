@@ -9,9 +9,6 @@ package Collection_framework;
 //we can create a single node as a class called node and it contains 2 parts , value and a reference to whom it points, it points to another node of type node
 //problem: we cant directly the index
 //also we dont know how any elements are there in the list , they just know their value and the next node
-
-
-
 public class Linked_List{
 
     //then we have two references to the first and the last elements of the lis called tail and head
@@ -24,7 +21,6 @@ public class Linked_List{
     //here , head is at 1
     //head.next is at 2 , head.next.next is at 3
     //head.next.next.next is at null
-
 
     //to maintain the size as well we can create a size variable
     int size;
@@ -108,6 +104,30 @@ public class Linked_List{
 
         //increment the size
         size++;
+
+    }
+
+    //insert at index via recursion
+
+    public void insert_recursively(int val,int index){
+        head=insertRec(val,index,head);
+    }
+    private Node insertRec(int val,int index,Node node){
+
+        //when index becomes zero , create our node , pointing to the node in current function call , incremenet the size as well
+        if(index==0){
+            Node temp=new Node(val,node);
+            size++;
+            return temp;
+        }
+
+        //while going back the call stack , we have to connect the previous node to the returned node
+        node.next=insertRec(val,index-1,node.next);
+        return node;
+    }
+
+    //insert using recursion at a particular index
+    public void insert_using_recursion(int val,int index){
 
     }
 
