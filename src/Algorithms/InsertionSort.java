@@ -31,21 +31,28 @@ public class InsertionSort {
 
         int size=arr.length;
 
+        //outer loop for the phases
         for(int i=1;i<size;i++){
 
-            //take the element that we want to fit
+            //call the current j index to be the key
             int key=arr[i];
 
-            //point of comparison
+            //the value to start comparison with is one behind our start value
             int j=i-1;
 
-            while (j>=0 && arr[j]>key ){
+            //so first thing to keep in mind is that we will make comparisons until and unless we have values that are greater than our key value
+            //basically we are shifting elements to the right and finding the position of key and placing it at that position
+            //so worst case scenario is that we will traverse till the oth index , thats why we check till j greater than zero
+            //also we need to compare till there is no value greater than key
 
+            while(j>=0 && arr[j]>key  ){
                 arr[j+1]=arr[j];
                 j--;
             }
 
-            arr[j]=key;
+            //at the end put the key to its position and that is exactly where our j+1 points now
+            arr[j+1]=key;
+
         }
     }
 
@@ -62,7 +69,7 @@ public class InsertionSort {
 
 
         int[] arr={4,1,3,2,5};
-        insertion(arr);
+        actualInsertion(arr);
 
         System.out.println(Arrays.toString(arr));
     }
