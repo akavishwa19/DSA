@@ -1,6 +1,6 @@
 package Recursion;
 
-public class PrintToN {
+public class print1To5 {
 
     static void print(int n){
 
