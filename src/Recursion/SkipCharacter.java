@@ -32,6 +32,23 @@ public class SkipCharacter {
         }
         return removeRecursivelyReverse(str.substring(0,str.length()-1),str.charAt(str.length()-1)+temp);
     }
+    static String removeOptimised(String str){
+        //the idea is simple ,  we need to iterate iver the string and check for the character at 0th index , if the character is an a , we will call the function again but with removed
+        //first letter and the removed character will be called in the function call for temp
+        //when the charcater is not an a , simply call the function without first letter but add the first character in the temp string as well
+
+        //if length of string becomes zero , simply return the temp argument
+        if(str.length()==0){
+            return "";
+        }
+
+        //if it is a , call with rest of the string and original temp
+        if(str.charAt(0)=='a'){
+            return removeOptimised(str.substring(1));
+        }
+        //if it is not a , call with rest of the string and temp with first letter appended into the temp argument
+        return str.charAt(0)+ removeOptimised(str.substring(1));
+    }
     static String remove(String str){
 
         String temp="";
@@ -48,6 +65,6 @@ public class SkipCharacter {
         return temp;
     }
     public static void main(String[] args) {
-        System.out.println(removeRecursivelyReverse("abcdbacd",""));
+        System.out.println(removeOptimised("abcdbacd"));
     }
 }
