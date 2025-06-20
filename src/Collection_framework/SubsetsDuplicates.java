@@ -23,6 +23,9 @@ public class SubsetsDuplicates {
 
         return arr;
     }
+
+    //coming to the logic, its going to be the same as what we did previously to copy and add into the lists iterativelu
+    //just that where we are wanting to append in case of copy elements
     static List<List<Integer>> subsetWithoutDuplicatesIterative(int[] arr){
         List<List<Integer>> upper=new ArrayList<>(); //create the result list
         upper.add(new ArrayList<>()); //initialise that list with empty array list
