@@ -68,6 +68,27 @@ public class PrintPermutations {
 
     }
 
+    //count number of permutations
+    static int countPermutations(String unprocessed , String str){
+        if(str.isEmpty()){
+            return 1;
+        }
+
+        int count=0;
+
+        char focus_element=str.charAt(0);
+
+        for(int i=0;i<=unprocessed.length();i++){
+
+            String first=unprocessed.substring(0,i);
+            String last=unprocessed.substring(i);
+            count=count+ countPermutations(first+focus_element+last,str.substring(1));
+        }
+
+        return count;
+
+    }
+
     static void printSubsets(String unprocessed,String str){
         //base case
         if(str.isEmpty()){
@@ -103,5 +124,7 @@ public class PrintPermutations {
 
         List<String> list= generatePermutations("","abc");
         System.out.println(list);
+
+        System.out.println(countPermutations("","abcd"));
     }
 }
