@@ -20,7 +20,6 @@ public class PrintMazePathsTillEnd {
             printPaths(unprocessed+"D",r-1,c);
         }
 
-
     }
     public static void main(String[] args) {
         printPaths("",3,3);
