@@ -8,11 +8,14 @@ public class PrintAllPathsInMatrixAllDirections {
 
     static void printAllPaths(String unprocessed,boolean[][] maze , int[][] mazeRep,int r , int c , int step){
 
-        //put the step value into the representation maze
-        mazeRep[r][c]=step;
+
 
         //base condition
         if(r==maze.length-1 && c==maze[0].length-1 ){
+
+            //put the step value into the representation maze
+            mazeRep[r][c]=step;
+
             for(int[] nums:mazeRep){
                 System.out.println(Arrays.toString(nums));
             }
@@ -27,6 +30,9 @@ public class PrintAllPathsInMatrixAllDirections {
 
         //mark the traversed paths as false
         maze[r][c]=false;
+
+        //put the step value into the representation maze
+        mazeRep[r][c]=step;
 
 
 
