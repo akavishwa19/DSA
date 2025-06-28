@@ -29,6 +29,73 @@ public class NQueenProblem {
     //for (r,c) ==> left columns is r , since markings start from 0
     //              right columns is total - left cols -1
 
+    //we are creating a function to display the number of ways in which we can place N queens on the board
+    static int queens(boolean[][] board,int row){
+
+        //we come out of our function call when we are done processing the end row
+        if(row==board.length){
+            displayBoard(board);
+            System.out.println();
+            return 1;
+        }
+
+        int count=0;
+
+        //we will put our queens in the row column by column
+        for(int col=0;col<board.length;col++){
+
+            //if putting into the particular cell is safe , put it
+            if(isSafe(board,row,col)){
+                board[row][col]=true;
+
+                //then start putting in the subsequent rows
+                count = count + queens(board,row+1);
+
+                //when this function returns , mark the visited cell false
+                board[row][col]=false;
+
+            }
+
+        }
+
+        return count;
+
+    }
+
+    static boolean isSafe(boolean[][] board , int row , int col){
+
+        //check vertically upwards
+        for (int i=row;i>=0;i--){
+            if(board[i][col]){
+                return false;
+            }
+        }
+
+        //check the left diagonal
+        //places we can move in the left
+        int leftDistance=Math.min(row,col);
+
+        //we iterate from 1 because we need to check the subtracted value from the current position
+        for (int i=1;i<=leftDistance;i++){
+            if(board[row-i][col-i]){
+                return false;
+            }
+        }
+
+        //check for the right diagonal
+        //places we can go in the right
+        int rightDistance=Math.min(row,board.length-col-1);
+
+        //we iterate from 1 because we need to check the subtracted and added value from the current position based on row and column
+        for (int i=1;i<=rightDistance;i++){
+            if(board[row-i][col+i]){
+                return false;
+            }
+        }
+
+        return true;
+
+    }
 
 
 
@@ -49,11 +116,11 @@ public class NQueenProblem {
     public static void main(String[] args) {
         boolean[][] board={
                 {false , false , false , false},
-                {false , false , true  , false},
+                {false , false , false , false},
                 {false , false , false , false},
                 {false , false , false , false},
         };
-        displayBoard(board);
+        System.out.println(queens(board,0));
     }
 
 }
